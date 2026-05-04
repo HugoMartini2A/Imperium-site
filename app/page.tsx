@@ -51,37 +51,46 @@ export default function HomePage() {
           background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%)",
         }} />
 
-        {/* Hero overlay text */}
+        {/* Top tagline */}
         <motion.div
           style={{ opacity: textOpacity, y: textY }}
-          className="absolute inset-x-0 bottom-12 sm:bottom-16 text-center px-4 z-10"
+          className="absolute inset-x-0 top-32 sm:top-36 text-center px-4 z-10"
         >
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-neon-green tracking-[0.4em] text-xs sm:text-sm uppercase font-bold mb-3"
-            style={{ textShadow: "0 0 20px rgba(57,255,20,0.8)" }}
+            className="text-neon-green tracking-[0.4em] text-xs sm:text-sm uppercase font-bold"
+            style={{ textShadow: "0 0 20px rgba(0,0,0,0.9), 0 0 30px rgba(57,255,20,0.6)" }}
           >
             Porto-Vecchio · Corse du Sud
           </motion.p>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-white/90 tracking-[0.3em] text-xs uppercase font-medium"
+            className="mt-2 text-white/90 tracking-[0.3em] text-[10px] sm:text-xs uppercase font-medium"
+            style={{ textShadow: "0 0 10px rgba(0,0,0,0.95)" }}
           >
             Équipement <span className="text-[#FF2424] font-bold">Etenon Fitness</span> · Accès 24/7
           </motion.p>
+        </motion.div>
 
+        {/* Bottom scroll indicator (right side, small) */}
+        <motion.div
+          style={{ opacity: textOpacity }}
+          className="absolute bottom-6 right-6 z-10"
+        >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="mt-8 flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-1 opacity-80"
           >
-            <span className="text-white/50 text-[10px] tracking-[0.3em] uppercase">Découvrir</span>
-            <svg className="w-5 h-5 text-neon-green drop-shadow-[0_0_8px_rgba(57,255,20,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            <span className="text-white text-[9px] tracking-[0.3em] uppercase font-bold" style={{ textShadow: "0 0 8px rgba(0,0,0,0.95)" }}>
+              Scroll
+            </span>
+            <svg className="w-4 h-4 text-neon-green drop-shadow-[0_0_8px_rgba(57,255,20,0.9)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
             </svg>
           </motion.div>
         </motion.div>
