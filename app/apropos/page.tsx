@@ -107,11 +107,11 @@ export default function AProposPage() {
             <AnimatedSection direction="left">
               <span className="text-neon-green text-xs tracking-[0.4em] uppercase font-bold">Notre équipement</span>
               <h2 className="mt-3 text-4xl font-black text-white">
-                Partenaire <span className="text-neon-green">Etenon Fitness</span>
+                Partenaire <span className="text-[#FF2424]">Etenon Fitness</span>
               </h2>
               <p className="mt-4 text-gray-400 leading-relaxed">
-                IMPERIUM GYM a choisi Etenon Fitness pour l&apos;ensemble de son équipement de
-                musculation. Leader de l&apos;équipement fitness professionnel, Etenon garantit
+                IMPERIUM GYM a choisi <span className="text-[#FF2424] font-bold">Etenon Fitness</span> pour l&apos;ensemble de son équipement de
+                musculation. Leader de l&apos;équipement fitness professionnel, <span className="text-[#FF2424] font-bold">Etenon</span> garantit
                 des machines de haute technologie, une durabilité sans compromis et une expérience
                 utilisateur premium.
               </p>
@@ -138,18 +138,27 @@ export default function AProposPage() {
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="relative p-12 bg-dark-card border border-neon-green/20 rounded-2xl flex flex-col items-center justify-center min-h-[300px]">
-                <div className="relative w-48 h-20 mb-4">
+              <div className="relative p-12 bg-dark-card border border-neon-green/20 rounded-2xl flex flex-col items-center justify-center min-h-[300px] overflow-hidden">
+                {/* Decorative glow */}
+                <div className="absolute inset-0 bg-gradient-radial from-neon-green/5 via-transparent to-transparent" />
+
+                <div className="relative w-44 h-44 mb-6 rounded-xl overflow-hidden">
                   <GymImage
-                    src="/images/logo-etenon.png"
+                    src="/images/logo-etenon.jpg"
                     alt="Etenon Fitness"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                     fallbackLabel="Logo Etenon"
                   />
                 </div>
-                <p className="text-white font-bold text-lg">Etenon Fitness</p>
-                <p className="text-neon-green text-sm font-medium mt-2">Équipement officiel IMPERIUM GYM</p>
+                <p className="text-white font-bold text-lg tracking-widest uppercase">Etenon Fitness</p>
+                <p className="text-neon-green text-sm font-medium mt-2 tracking-wide">Équipement officiel IMPERIUM GYM</p>
+
+                {/* Corner accents */}
+                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-neon-green/40" />
+                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-neon-green/40" />
+                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-neon-green/40" />
+                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-neon-green/40" />
               </div>
             </AnimatedSection>
           </div>
@@ -163,7 +172,7 @@ export default function AProposPage() {
             {[
               { value: "24/7", label: "Accès libre" },
               { value: "Etenon", label: "Équipement" },
-              { value: "IFBB", label: "Coaching" },
+              { value: "Coach", label: "Résident" },
               { value: "P.V.", label: "Porto-Vecchio" },
             ].map((stat, i) => (
               <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
@@ -172,6 +181,66 @@ export default function AProposPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── FAQ ──────────────────────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-dark-bg relative overflow-hidden border-t border-dark-border">
+        {/* Decorative IMPERIUM mention background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none">
+          <span className="text-[20vw] font-black tracking-tighter text-neon-green whitespace-nowrap">
+            IMPERIUM
+          </span>
+        </div>
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <span className="text-neon-green text-xs tracking-[0.4em] uppercase font-bold">Questions fréquentes</span>
+            <h2 className="mt-3 text-4xl font-black text-white">F.A.Q</h2>
+            <div className="mt-4 w-20 h-0.5 bg-neon-green mx-auto" />
+          </AnimatedSection>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Quels sont les horaires d'ouverture ?",
+                a: "Votre salle est ouverte en accès libre 7j/7 de 6h à 23h. L'accueil est ouvert du Lundi au Vendredi de 10h à 14h et de 15h30 à 19h30.",
+              },
+              {
+                q: "Quels sont les différents forfaits ?",
+                a: "Vous trouverez nos tarifs dans l'onglet \"Tarifs\" en haut à droite de votre écran sur ordinateur, ou dans le volet déroulant sur smartphone. Plusieurs formules avec ou sans engagement.",
+              },
+              {
+                q: "Y a-t-il un coach sur place ?",
+                a: "Oui — Maximilien, notre coach résident, est disponible pour des séances en individuel, duo ou trio, ainsi que des programmes d'entraînement personnalisés et des conseils nutrition.",
+              },
+              {
+                q: "Comment accéder à la salle en accès libre ?",
+                a: "Vous recevez une carte d'accès magnétique personnelle lors de votre inscription. Cette carte vous permet d'entrer 7j/7 de 6h à 23h selon votre formule.",
+              },
+            ].map((item, i) => (
+              <AnimatedSection key={item.q} delay={i * 0.08}>
+                <details className="group p-6 bg-dark-card border border-dark-border rounded-xl hover:border-neon-green/30 transition-colors duration-300">
+                  <summary className="flex items-center justify-between cursor-pointer list-none">
+                    <span className="text-white font-semibold text-sm">{item.q}</span>
+                    <svg className="w-5 h-5 text-neon-green flex-shrink-0 ml-4 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p className="mt-4 text-gray-400 text-sm leading-relaxed">{item.a}</p>
+                </details>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="mt-10 text-center" delay={0.3}>
+            <Link
+              href="/contact"
+              className="btn-neon inline-block px-6 py-3 bg-neon-green text-black font-bold text-xs tracking-widest uppercase rounded hover:bg-white transition-colors duration-300"
+            >
+              Contactez-nous
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 

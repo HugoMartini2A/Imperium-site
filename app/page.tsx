@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -15,159 +14,95 @@ export default function HomePage() {
     offset: ["start start", "end start"],
   });
 
-  const gorillaScale = useTransform(scrollYProgress, [0, 0.7], [1, 0.3]);
-  const gorillaOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [1, 1.2, 0]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
-  const bgOpacity = useTransform(scrollYProgress, [0.3, 0.8], [0, 0.8]);
+  // Parallax: gorilla moves slower than content (50% scroll speed)
+  const gorillaY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const gorillaScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0.3, 0.6, 0.95]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
 
   return (
     <>
-      {/* ─── HERO ──────────────────────────────────────────────────────────── */}
-      <section
-        ref={heroRef}
-        className="relative h-[200vh]"
-      >
-        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-dark-bg">
-          {/* Animated bg photo reveal */}
-          <motion.div
-            style={{ opacity: bgOpacity }}
-            className="absolute inset-0 z-0"
-          >
-            <ImagePlaceholder
-              label="Photo ambiance salle (à ajouter dans /public/images/salle-hero.jpg)"
-              className="w-full h-full rounded-none border-0"
-              aspectRatio=""
-            />
-            <div className="absolute inset-0 bg-black/60" />
-          </motion.div>
-
-          {/* Grid lines decoration */}
-          <div className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: "linear-gradient(rgba(57,255,20,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.5) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
+      {/* ─── HERO — PHOTO GORILLE ─────────────────────────────────────────── */}
+      <section ref={heroRef} className="relative h-screen overflow-hidden bg-black">
+        {/* Parallax gorilla photo */}
+        <motion.div
+          style={{ y: gorillaY, scale: gorillaScale }}
+          className="absolute inset-0 will-change-transform"
+        >
+          <Image
+            src="/images/hero-gorilla.png"
+            alt="IMPERIUM GYM — Fresque gorille"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
           />
+        </motion.div>
 
-          {/* Gorilla + glow */}
-          <div className="relative z-10 flex flex-col items-center">
-            <motion.div
-              style={{ scale: gorillaScale, opacity: gorillaOpacity }}
-              className="relative"
-            >
-              {/* Glow ring */}
-              <motion.div
-                style={{ opacity: glowOpacity }}
-                className="absolute inset-0 rounded-full"
-                animate={{
-                  boxShadow: [
-                    "0 0 40px 20px rgba(57,255,20,0.3), 0 0 80px 40px rgba(57,255,20,0.15)",
-                    "0 0 80px 40px rgba(57,255,20,0.5), 0 0 160px 80px rgba(57,255,20,0.25)",
-                    "0 0 40px 20px rgba(57,255,20,0.3), 0 0 80px 40px rgba(57,255,20,0.15)",
-                  ],
-                }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              />
+        {/* Bottom gradient overlay for fusion with next section */}
+        <motion.div
+          style={{ opacity: overlayOpacity }}
+          className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black"
+        />
 
-              {/* Gorilla logo */}
-              <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[520px] lg:h-[520px]">
-                {/* Try to load real image, fallback to styled placeholder */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <Image
-                    src="/images/logo-gorille.png"
-                    alt="IMPERIUM GYM — Logo Gorille"
-                    fill
-                    className="object-contain drop-shadow-[0_0_30px_rgba(57,255,20,0.8)]"
-                    priority
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                  {/* SVG fallback gorilla silhouette */}
-                  <svg
-                    viewBox="0 0 200 200"
-                    className="absolute inset-0 w-full h-full opacity-60"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Gorilla silhouette stylized */}
-                    <ellipse cx="100" cy="80" rx="45" ry="50" fill="#39FF14" fillOpacity="0.15" />
-                    <ellipse cx="100" cy="80" rx="35" ry="38" fill="#39FF14" fillOpacity="0.2" />
-                    {/* Head */}
-                    <ellipse cx="100" cy="75" rx="28" ry="30" fill="#2a2a2a" stroke="#39FF14" strokeWidth="2" />
-                    {/* Eyes */}
-                    <ellipse cx="90" cy="70" rx="5" ry="5" fill="#39FF14" />
-                    <ellipse cx="110" cy="70" rx="5" ry="5" fill="#39FF14" />
-                    <circle cx="90" cy="70" r="2.5" fill="#000" />
-                    <circle cx="110" cy="70" r="2.5" fill="#000" />
-                    <circle cx="91.5" cy="68.5" r="1" fill="#fff" />
-                    <circle cx="111.5" cy="68.5" r="1" fill="#fff" />
-                    {/* Nose */}
-                    <ellipse cx="100" cy="80" rx="8" ry="6" fill="#1a1a1a" stroke="#39FF14" strokeWidth="1" />
-                    {/* Nostrils */}
-                    <circle cx="96" cy="80" r="2" fill="#39FF14" fillOpacity="0.5" />
-                    <circle cx="104" cy="80" r="2" fill="#39FF14" fillOpacity="0.5" />
-                    {/* Ears */}
-                    <ellipse cx="70" cy="72" rx="10" ry="14" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1.5" />
-                    <ellipse cx="130" cy="72" rx="10" ry="14" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1.5" />
-                    {/* Body */}
-                    <ellipse cx="100" cy="135" rx="40" ry="42" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1.5" />
-                    {/* Chest line */}
-                    <path d="M85 115 Q100 125 115 115" stroke="#39FF14" strokeWidth="1" strokeOpacity="0.5" fill="none" />
-                    {/* Arms */}
-                    <ellipse cx="55" cy="128" rx="14" ry="30" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1.5" transform="rotate(-10 55 128)" />
-                    <ellipse cx="145" cy="128" rx="14" ry="30" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1.5" transform="rotate(10 145 128)" />
-                    {/* Legs */}
-                    <ellipse cx="85" cy="175" rx="15" ry="18" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1" />
-                    <ellipse cx="115" cy="175" rx="15" ry="18" fill="#2a2a2a" stroke="#39FF14" strokeWidth="1" />
-                    {/* Crown / power indicator */}
-                    <path d="M78 48 L85 38 L92 48 L100 35 L108 48 L115 38 L122 48" stroke="#39FF14" strokeWidth="2" fill="none" strokeLinecap="round" />
-                  </svg>
-                </div>
-              </div>
-            </motion.div>
+        {/* Vignette for premium feel */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%)",
+        }} />
 
-            {/* Hero text */}
-            <motion.div
-              style={{ opacity: textOpacity, y: textY }}
-              className="absolute bottom-[-80px] sm:bottom-[-100px] text-center w-full px-4"
-            >
-              <motion.h1
-                className="font-black text-5xl sm:text-7xl lg:text-8xl tracking-[0.15em] text-white uppercase"
-                style={{
-                  textShadow: "0 0 40px rgba(57,255,20,0.4)",
-                }}
-              >
-                IMPERIUM
-                <span className="block text-neon-green" style={{ textShadow: "0 0 30px #39FF14, 0 0 60px #39FF14" }}>
-                  GYM
-                </span>
-              </motion.h1>
-              <motion.p
-                className="mt-3 text-gray-300 tracking-[0.3em] text-sm sm:text-base uppercase"
-              >
-                Porto-Vecchio, Corse du Sud
-              </motion.p>
-              <motion.p
-                className="mt-2 text-neon-green/70 tracking-[0.2em] text-xs uppercase font-medium"
-              >
-                Équipement Etenon · Premium · 24/7
-              </motion.p>
+        {/* Hero overlay text */}
+        <motion.div
+          style={{ opacity: textOpacity, y: textY }}
+          className="absolute inset-x-0 bottom-12 sm:bottom-16 text-center px-4 z-10"
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-neon-green tracking-[0.4em] text-xs sm:text-sm uppercase font-bold mb-3"
+            style={{ textShadow: "0 0 20px rgba(57,255,20,0.8)" }}
+          >
+            Porto-Vecchio · Corse du Sud
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-white/90 tracking-[0.3em] text-xs uppercase font-medium"
+          >
+            Équipement <span className="text-[#FF2424] font-bold">Etenon Fitness</span> · Accès 24/7
+          </motion.p>
 
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="mt-8 flex flex-col items-center gap-2"
-              >
-                <span className="text-gray-500 text-xs tracking-widest uppercase">Découvrir</span>
-                <svg className="w-5 h-5 text-neon-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </motion.div>
-            </motion.div>
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="mt-8 flex flex-col items-center gap-2"
+          >
+            <span className="text-white/50 text-[10px] tracking-[0.3em] uppercase">Découvrir</span>
+            <svg className="w-5 h-5 text-neon-green drop-shadow-[0_0_8px_rgba(57,255,20,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ─── HOURS BANNER (above the fold) ────────────────────────────────── */}
+      <section className="bg-black border-y border-neon-green/20 py-3 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs sm:text-sm">
+          <span className="flex items-center gap-2 text-white">
+            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse" />
+            <span className="font-bold tracking-widest uppercase">Ouvert maintenant</span>
+          </span>
+          <span className="text-gray-400">
+            <span className="text-neon-green font-bold">6h–23h</span> · 7j/7 · Accès libre par badge
+          </span>
+          <a href="tel:+33495523352" className="text-white hover:text-neon-green font-bold tracking-wider transition-colors duration-200 flex items-center gap-1.5">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            04 95 52 33 52
+          </a>
         </div>
       </section>
 
@@ -190,7 +125,7 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                   </svg>
                 ),
-                title: "Équipement Etenon Premium",
+                title: "Équipement Etenon",
                 desc: "Machines conçues pour allier innovation, confort et performance. Biomécanique optimale pour un recrutement musculaire parfait.",
               },
               {
@@ -209,7 +144,7 @@ export default function HomePage() {
                   </svg>
                 ),
                 title: "Coaching Personnel",
-                desc: "Peggy FABY, ancienne championne IFBB, programmes sur mesure et suivi personnalisé pour atteindre vos objectifs.",
+                desc: "Maximilien, coach résident athlète de natural bodybuilding, programmes sur mesure et suivi nutritionnel personnalisé.",
               },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.15} direction="up">

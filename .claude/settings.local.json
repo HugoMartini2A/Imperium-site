@@ -16,7 +16,15 @@
       "Bash(git commit *)",
       "Bash(git remote *)",
       "Bash(git branch *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(cp \"/Users/hugodeman/Desktop/photos & fichiers Imperium/Logo Imperium à intégrer.png\" logo-imperium.png)",
+      "Bash(cp \"/Users/hugodeman/Desktop/photos & fichiers Imperium/Coach Résident Maximilien .png\" coach-maximilien.png)",
+      "Bash(cp \"/Users/hugodeman/Desktop/photos & fichiers Imperium/etenon-fitness-9328dbcf\" logo-etenon.jpg)",
+      "Bash(cp \"/Users/hugodeman/Desktop/photos & fichiers Imperium/mention de Imperium.png\" mention-imperium.png)",
+      "Bash(cp ~/Desktop/hero-gorilla.PNG \"/Users/hugodeman/Desktop/mkdir imperium-site/public/images/hero-gorilla.png\")",
+      "Bash(cp ~/Desktop/coach-peggy.JPG \"/Users/hugodeman/Desktop/mkdir imperium-site/public/images/coach-peggy.jpg\")",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" \"http://localhost:3000/_next/image?url=/images/hero-gorilla.png&w=1920&q=75\")"
     ]
   }
 }
