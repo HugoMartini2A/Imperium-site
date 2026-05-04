@@ -107,11 +107,11 @@ export default function AProposPage() {
             <AnimatedSection direction="left">
               <span className="text-neon-green text-xs tracking-[0.4em] uppercase font-bold">Notre équipement</span>
               <h2 className="mt-3 text-4xl font-black text-white">
-                Partenaire <span className="text-[#FF2424]">Etenon Fitness</span>
+                Partenaire <span className="text-white font-semibold">Etenon Fitness</span>
               </h2>
               <p className="mt-4 text-gray-400 leading-relaxed">
-                IMPERIUM GYM a choisi <span className="text-[#FF2424] font-bold">Etenon Fitness</span> pour l&apos;ensemble de son équipement de
-                musculation. Leader de l&apos;équipement fitness professionnel, <span className="text-[#FF2424] font-bold">Etenon</span> garantit
+                IMPERIUM GYM a choisi <span className="text-white font-semibold">Etenon Fitness</span> pour l&apos;ensemble de son équipement de
+                musculation. Leader de l&apos;équipement fitness professionnel, <span className="text-white font-semibold">Etenon</span> garantit
                 des machines de haute technologie, une durabilité sans compromis et une expérience
                 utilisateur premium.
               </p>

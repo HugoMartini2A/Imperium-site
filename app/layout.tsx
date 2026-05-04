@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import CursorTrail from "@/components/CursorTrail";
 
 export const metadata: Metadata = {
   title: "IMPERIUM GYM — Salle de Musculation Porto-Vecchio, Corse",
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FloatingActions />
+        <CursorTrail />
       </body>
     </html>
   );

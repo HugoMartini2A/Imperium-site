@@ -60,7 +60,7 @@ export default function SallePage() {
               <span className="text-neon-green">haut de gamme</span>
             </h1>
             <p className="mt-6 text-gray-300 max-w-2xl leading-relaxed">
-              Entièrement équipé en matériel <span className="text-[#FF2424] font-bold">Etenon Fitness</span> dernière génération.
+              Entièrement équipé en matériel <span className="text-white font-semibold">Etenon Fitness</span> dernière génération.
               Biomécanique optimale, confort inégalé, performance maximale.
             </p>
           </AnimatedSection>
@@ -82,10 +82,10 @@ export default function SallePage() {
             <AnimatedSection direction="right">
               <span className="text-neon-green text-xs tracking-[0.4em] uppercase font-bold">Machines de précision</span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-black tracking-tight text-white">
-                Équipement <span className="text-[#FF2424]">Etenon Fitness</span>
+                Équipement <span className="text-white font-semibold">Etenon Fitness</span>
               </h2>
               <p className="mt-4 text-gray-400 leading-relaxed">
-                Découvrez un espace de musculation entièrement équipé de machines <span className="text-[#FF2424] font-bold">Etenon Fitness</span>,
+                Découvrez un espace de musculation entièrement équipé de machines <span className="text-white font-semibold">Etenon Fitness</span>,
                 conçues pour allier innovation, confort et performance. Nos équipements ont été
                 développés en tenant compte des dernières avancées en biomécanique pour vous offrir
                 une expérience d&apos;entraînement optimale.

@@ -93,6 +93,14 @@ body::before {
   left: 100%;
 }
 
+/* Custom cursor — hide native cursor on desktop when active */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
 /* Section transition */
 .section-enter {
   opacity: 0;

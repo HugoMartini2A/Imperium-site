@@ -1,98 +1,73 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
+import HeroBubble from "@/components/HeroBubble";
 
 export default function HomePage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Parallax: gorilla moves slower than content (50% scroll speed)
-  const gorillaY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const gorillaScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0.3, 0.6, 0.95]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
-
   return (
     <>
-      {/* ─── HERO — PHOTO GORILLE ─────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative h-screen overflow-hidden bg-black">
-        {/* Parallax gorilla photo */}
-        <motion.div
-          style={{ y: gorillaY, scale: gorillaScale }}
-          className="absolute inset-0 will-change-transform"
-        >
-          <Image
-            src="/images/hero-gorilla.png"
-            alt="IMPERIUM GYM — Fresque gorille"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
-
-        {/* Bottom gradient overlay for fusion with next section */}
-        <motion.div
-          style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black"
+      {/* ─── HERO — BULLE GORILLE ─────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-dark-bg pt-32 pb-24">
+        {/* Subtle grid background for depth */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(57,255,20,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.6) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
         />
 
-        {/* Vignette for premium feel */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%)",
-        }} />
+        {/* Soft radial glow background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[800px] h-[800px] rounded-full bg-neon-green/[0.04] blur-3xl" />
+        </div>
 
-        {/* Top tagline */}
+        {/* Hero bubble centerpiece */}
+        <div className="relative z-10 flex items-center justify-center min-h-[520px] sm:min-h-[600px]">
+          <HeroBubble />
+        </div>
+
+        {/* Hero text below bubble — protected from effects */}
         <motion.div
-          style={{ opacity: textOpacity, y: textY }}
-          className="absolute inset-x-0 top-32 sm:top-36 text-center px-4 z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="relative z-20 mt-12 text-center px-4 max-w-3xl"
         >
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-neon-green tracking-[0.4em] text-xs sm:text-sm uppercase font-bold"
-            style={{ textShadow: "0 0 20px rgba(0,0,0,0.9), 0 0 30px rgba(57,255,20,0.6)" }}
-          >
+          <h1 className="font-black text-4xl sm:text-6xl lg:text-7xl tracking-[0.1em] text-white uppercase">
+            IMPERIUM
+            <span className="block text-neon-green mt-1" style={{ textShadow: "0 0 20px #39FF14, 0 0 40px rgba(57,255,20,0.5)" }}>
+              GYM
+            </span>
+          </h1>
+          <p className="mt-6 text-neon-green tracking-[0.4em] text-xs sm:text-sm uppercase font-bold">
             Porto-Vecchio · Corse du Sud
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-2 text-white/90 tracking-[0.3em] text-[10px] sm:text-xs uppercase font-medium"
-            style={{ textShadow: "0 0 10px rgba(0,0,0,0.95)" }}
-          >
-            Équipement <span className="text-[#FF2424] font-bold">Etenon Fitness</span> · Accès 24/7
-          </motion.p>
+          </p>
+          <p className="mt-2 text-white/70 tracking-[0.3em] text-[10px] sm:text-xs uppercase font-medium">
+            Équipement Etenon Fitness · Accès 24/7
+          </p>
         </motion.div>
 
-        {/* Bottom scroll indicator (right side, small) */}
+        {/* Scroll indicator */}
         <motion.div
-          style={{ opacity: textOpacity }}
-          className="absolute bottom-6 right-6 z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7, y: [0, 8, 0] }}
+          transition={{
+            opacity: { delay: 1.2, duration: 0.6 },
+            y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="relative z-10 mt-12 flex flex-col items-center gap-1"
         >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-1 opacity-80"
-          >
-            <span className="text-white text-[9px] tracking-[0.3em] uppercase font-bold" style={{ textShadow: "0 0 8px rgba(0,0,0,0.95)" }}>
-              Scroll
-            </span>
-            <svg className="w-4 h-4 text-neon-green drop-shadow-[0_0_8px_rgba(57,255,20,0.9)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </motion.div>
+          <span className="text-white/60 text-[10px] tracking-[0.3em] uppercase font-medium">
+            Découvrir
+          </span>
+          <svg className="w-4 h-4 text-neon-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+          </svg>
         </motion.div>
       </section>
 

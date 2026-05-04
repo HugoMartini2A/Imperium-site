@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Salle de musculation haut de gamme à Porto-Vecchio.<br />
-              Équipement <span className="text-[#FF2424] font-bold">Etenon Fitness</span>. Coach résident.
+              Équipement <span className="text-white font-semibold">Etenon Fitness</span>. Coach résident.
             </p>
 
             {/* Social */}
@@ -107,7 +107,7 @@ export default function Footer() {
           </p>
           <p className="text-gray-600 text-xs">
             Équipement{" "}
-            <span className="text-[#FF2424] font-bold">Etenon Fitness</span>
+            <span className="text-white font-semibold">Etenon Fitness</span>
           </p>
         </div>
       </div>
