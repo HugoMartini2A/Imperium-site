@@ -170,14 +170,19 @@ export default function AProposPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "24/7", label: "Accès libre" },
+              { value: "6H00 / 23H00", sub: "7j/7", label: "Accès libre" },
               { value: "Etenon", label: "Équipement" },
-              { value: "Coach", label: "Résident" },
-              { value: "P.V.", label: "Porto-Vecchio" },
+              { value: "Coach", sub: "Diplômé", label: "Encadrement" },
+              { value: "Porto", sub: "Vecchio", label: "Localisation" },
             ].map((stat, i) => (
               <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
-                <p className="text-4xl sm:text-5xl font-black text-neon-green">{stat.value}</p>
-                <p className="text-gray-500 text-sm mt-2 tracking-widest uppercase">{stat.label}</p>
+                <p className="text-2xl sm:text-3xl font-black text-neon-green leading-tight">
+                  {stat.value}
+                  {stat.sub && (
+                    <span className="block text-xl sm:text-2xl mt-0.5">{stat.sub}</span>
+                  )}
+                </p>
+                <p className="text-gray-500 text-xs mt-3 tracking-widest uppercase">{stat.label}</p>
               </AnimatedSection>
             ))}
           </div>
@@ -212,7 +217,7 @@ export default function AProposPage() {
               },
               {
                 q: "Y a-t-il un coach sur place ?",
-                a: "Oui — Maximilien, notre coach résident, est disponible pour des séances en individuel, duo ou trio, ainsi que des programmes d'entraînement personnalisés et des conseils nutrition.",
+                a: "Oui — Maximilien, notre coach diplômé, est disponible pour des séances en individuel, duo ou trio, ainsi que des programmes d'entraînement personnalisés et des conseils nutrition.",
               },
               {
                 q: "Comment accéder à la salle en accès libre ?",

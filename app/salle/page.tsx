@@ -237,7 +237,7 @@ export default function SallePage() {
                 <div className="relative aspect-[4/5] overflow-hidden bg-black">
                   <GymImage
                     src="/images/coach-maximilien.png"
-                    alt="Maximilien — Coach résident IMPERIUM GYM"
+                    alt="Maximilien — Coach diplômé IMPERIUM GYM"
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     fallbackLabel="Photo Maximilien"

@@ -70,19 +70,6 @@ export default function TarifsPage() {
     <>
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-        {/* Localisation — haut à gauche */}
-        <div className="absolute top-24 left-4 sm:left-6 lg:left-8 z-20">
-          <div className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase">
-            <svg className="w-3.5 h-3.5 text-neon-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span className="text-neon-green font-bold">Ping</span>
-            <span className="text-gray-500">—</span>
-            <span className="text-gray-300 font-medium">8<sup>ème</sup> arr., Avenue de Bastia</span>
-          </div>
-        </div>
-
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[600px] rounded-full bg-neon-green/5 blur-3xl" />
         </div>
