@@ -101,7 +101,7 @@ export default function HomePage() {
             <div className="mt-4 w-20 h-0.5 bg-neon-green mx-auto" />
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: (
@@ -128,7 +128,16 @@ export default function HomePage() {
                   </svg>
                 ),
                 title: "Coaching Personnel",
-                desc: "Maximilien, coach résident athlète de natural bodybuilding, programmes sur mesure et suivi nutritionnel personnalisé.",
+                desc: "Peggy, Maximilien et Nicolas — coachs résidents pour la musculation, le natural bodybuilding et la boxe. Programmes sur mesure.",
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8 text-neon-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                  </svg>
+                ),
+                title: "Distributeur sur place",
+                desc: "Boissons énergisantes (lot), barres et boissons protéinées, produits liés à la musculation et alimentation équilibrée, boissons riches en collagène.",
               },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.15} direction="up">

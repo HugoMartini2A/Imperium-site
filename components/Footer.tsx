@@ -17,12 +17,12 @@ export default function Footer() {
                   className="object-contain drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]"
                 />
               </div>
-              <div className="leading-none">
-                <span className="font-black text-white text-lg tracking-[0.1em] uppercase block">
+              <div className="flex flex-col items-center leading-none">
+                <span className="font-black text-white text-lg tracking-[0.1em] uppercase">
                   IMPERIUM
                 </span>
                 <span
-                  className="block font-black text-neon-green text-xs tracking-[0.1em] uppercase mt-0.5"
+                  className="font-black text-neon-green text-xs tracking-[0.1em] uppercase mt-0.5"
                   style={{ textShadow: "0 0 10px #39FF14, 0 0 20px rgba(57,255,20,0.5)" }}
                 >
                   GYM

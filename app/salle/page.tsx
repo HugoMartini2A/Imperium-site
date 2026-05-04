@@ -187,7 +187,7 @@ export default function SallePage() {
           </AnimatedSection>
 
           {/* Coach cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Peggy */}
             <AnimatedSection direction="left">
               <div className="group relative bg-dark-card border border-dark-border hover:border-neon-green/40 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2">
@@ -265,6 +265,49 @@ export default function SallePage() {
 
                   <div className="mt-5 flex flex-wrap gap-2">
                     {["Natural Bodybuilding", "Individuel · Duo · Trio", "Nutrition"].map((tag) => (
+                      <span key={tag} className="text-[10px] tracking-widest uppercase text-gray-500 bg-dark-bg border border-dark-border px-2.5 py-1 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Nicolas */}
+            <AnimatedSection direction="right" delay={0.1}>
+              <div className="group relative bg-dark-card border border-dark-border hover:border-neon-green/40 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2">
+                <div className="relative aspect-[4/5] overflow-hidden bg-black">
+                  <GymImage
+                    src="/images/coach-nicolas.png"
+                    alt="Nicolas — Coach de boxe IMPERIUM GYM"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    fallbackLabel="Photo Nicolas"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-neon-green text-black text-[10px] font-black px-3 py-1.5 rounded-full tracking-widest uppercase">
+                      Coach Boxe
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-3xl font-black text-white tracking-tight">
+                      <span className="text-neon-green">Nicolas</span>
+                    </h3>
+                    <p className="text-white/80 text-sm font-medium tracking-wide mt-1">Coach de Boxe</p>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Nicolas encadre les séances de boxe à IMPERIUM GYM. Travail technique, préparation
+                    physique, sparring et conditionnement — il accompagne tous les niveaux, du débutant
+                    au pratiquant confirmé.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {["Boxe technique", "Préparation physique", "Tous niveaux"].map((tag) => (
                       <span key={tag} className="text-[10px] tracking-widest uppercase text-gray-500 bg-dark-bg border border-dark-border px-2.5 py-1 rounded">
                         {tag}
                       </span>
