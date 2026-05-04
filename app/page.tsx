@@ -48,7 +48,7 @@ export default function HomePage() {
             Porto-Vecchio · Corse du Sud
           </p>
           <p className="mt-2 text-white/70 tracking-[0.3em] text-[10px] sm:text-xs uppercase font-medium">
-            Équipement Etenon Fitness · Accès 24/7
+            Équipement Etenon Fitness · 6h – 23h - 7j/7
           </p>
         </motion.div>
 
@@ -79,7 +79,7 @@ export default function HomePage() {
             <span className="font-bold tracking-widest uppercase">Ouvert maintenant</span>
           </span>
           <span className="text-gray-400">
-            <span className="text-neon-green font-bold">6h–23h</span> · 7j/7 · QR code via Sportigo
+            <span className="text-neon-green font-bold">6h – 23h - 7j/7</span> · QR code via Sportigo
           </span>
           <a href="tel:+33495523352" className="text-white hover:text-neon-green font-bold tracking-wider transition-colors duration-200 flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -240,7 +240,7 @@ export default function HomePage() {
             Prêt à commencer ?
           </h2>
           <p className="mt-6 text-gray-400 text-lg leading-relaxed">
-            Accès illimité · 24h/24 · 7j/7<br />
+            Accès illimité · 6h – 23h - 7j/7<br />
             Des formules pour tous les profils, avec ou sans engagement.
           </p>
 

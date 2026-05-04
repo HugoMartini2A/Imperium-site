@@ -102,7 +102,7 @@ export default function Footer() {
               </p>
             </address>
             <div className="mt-4 pt-4 border-t border-white/10">
-              <p className="text-xs text-gray-500">Accès libre : 6h–23h • 7j/7</p>
+              <p className="text-xs text-gray-500">Accès libre : 6h – 23h - 7j/7</p>
               <p className="text-xs text-gray-500">Accueil : Lun–Ven 10h–14h / 15h30–19h30</p>
             </div>
           </div>

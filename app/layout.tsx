@@ -8,7 +8,7 @@ import CursorTrail from "@/components/CursorTrail";
 export const metadata: Metadata = {
   title: "IMPERIUM GYM — Salle de Musculation Porto-Vecchio, Corse",
   description:
-    "Salle de musculation haut de gamme à Porto-Vecchio, Corse du Sud. Équipement Etenon premium, coaching personnel avec Peggy FABY, ancienne championne IFBB. Accès 24h/24.",
+    "Salle de musculation haut de gamme à Porto-Vecchio, Corse du Sud. Équipement Etenon premium, coaching personnel diplômé. Accès 6h – 23h - 7j/7.",
   keywords: [
     "salle de sport Porto-Vecchio",
     "musculation Corse",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "IMPERIUM GYM — Porto-Vecchio, Corse",
-    description: "Salle de musculation haut de gamme équipée Etenon. Coaching IFBB. Accès 24/7.",
+    description: "Salle de musculation haut de gamme équipée Etenon. Coach diplômé. Accès 6h – 23h - 7j/7.",
     type: "website",
     locale: "fr_FR",
   },

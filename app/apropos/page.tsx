@@ -83,7 +83,7 @@ export default function AProposPage() {
               {
                 number: "03",
                 title: "Résultats",
-                desc: "Notre objectif ? Que vous atteigniez le vôtre. Équipement top, coaching expert, accès 24/7 — tout est là.",
+                desc: "Notre objectif ? Que vous atteigniez le vôtre. Équipement top, coaching expert, accès 6h – 23h - 7j/7 — tout est là.",
               },
             ].map((item, i) => (
               <AnimatedSection key={item.number} delay={i * 0.15}>
@@ -170,7 +170,7 @@ export default function AProposPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "6H00 / 23H00", sub: "7j/7", label: "Accès libre" },
+              { value: "6h – 23h", sub: "7j/7", label: "Accès libre" },
               { value: "Etenon", label: "Équipement" },
               { value: "Coach", sub: "Diplômé", label: "Encadrement" },
               { value: "Porto", sub: "Vecchio", label: "Localisation" },
@@ -209,7 +209,7 @@ export default function AProposPage() {
             {[
               {
                 q: "Quels sont les horaires d'ouverture ?",
-                a: "Votre salle est ouverte en accès libre 7j/7 de 6h à 23h. L'accueil est ouvert du Lundi au Vendredi de 10h à 14h et de 15h30 à 19h30.",
+                a: "Votre salle est ouverte en accès libre 6h – 23h - 7j/7. L'accueil est ouvert du Lundi au Vendredi de 10h à 14h et de 15h30 à 19h30.",
               },
               {
                 q: "Quels sont les différents forfaits ?",
@@ -221,7 +221,7 @@ export default function AProposPage() {
               },
               {
                 q: "Comment accéder à la salle en accès libre ?",
-                a: "L'accès se fait via un QR code personnel scanné depuis l'application Sportigo. Le scan valide votre passage et déclenche l'ouverture automatique de la porte. Disponible 7j/7 de 6h à 23h selon votre formule.",
+                a: "L'accès se fait via un QR code personnel scanné depuis l'application Sportigo. Le scan valide votre passage et déclenche l'ouverture automatique de la porte. Disponible 6h – 23h - 7j/7 selon votre formule.",
               },
             ].map((item, i) => (
               <AnimatedSection key={item.q} delay={i * 0.08}>

@@ -5,7 +5,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 export const metadata: Metadata = {
   title: "Tarifs & Abonnement — IMPERIUM GYM Porto-Vecchio",
   description:
-    "Découvrez nos formules d'abonnement à partir de 44,90€/mois. Accès 24h/24, 7j/7. Avec ou sans engagement. IMPERIUM GYM Porto-Vecchio, Corse.",
+    "Découvrez nos formules d'abonnement à partir de 44,90€/mois. Accès 6h – 23h - 7j/7. Avec ou sans engagement. IMPERIUM GYM Porto-Vecchio, Corse.",
 };
 
 interface PricingCardProps {
@@ -80,7 +80,7 @@ export default function TarifsPage() {
           </h1>
           <div className="mt-4 w-24 h-0.5 bg-neon-green mx-auto" />
           <p className="mt-6 text-gray-400 text-lg">
-            Accès illimité · 24h/24 · 7j/7
+            Accès illimité · 6h – 23h - 7j/7
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
             {["Équipement Premium", "Coaching disponible", "Accès QR Sportigo", "Sans frais cachés"].map((item) => (
@@ -116,7 +116,7 @@ export default function TarifsPage() {
             <AnimatedSection delay={0.1}>
               <PricingCard
                 title="Full Access + Engagement"
-                horaires="6h–23h · 7j/7"
+                horaires="6h – 23h - 7j/7"
                 prix="54,90€"
                 note="Engagement 12 mois · Frais d'inscription 40€"
                 highlight
@@ -142,7 +142,7 @@ export default function TarifsPage() {
             <AnimatedSection delay={0}>
               <PricingCard
                 title="Étudiant Sans Engagement"
-                horaires="6h–23h · 7j/7"
+                horaires="6h – 23h - 7j/7"
                 prix="44,90€"
                 note="Pas d'engagement · Frais d'inscription 40€"
                 badge="Étudiant"
@@ -159,7 +159,7 @@ export default function TarifsPage() {
             <AnimatedSection delay={0.2}>
               <PricingCard
                 title="Full Access Sans Engagement"
-                horaires="6h–23h · 7j/7"
+                horaires="6h – 23h - 7j/7"
                 prix="64,90€"
                 note="Pas d'engagement · Frais d'inscription 40€"
               />
@@ -220,7 +220,7 @@ export default function TarifsPage() {
               },
               {
                 title: "Accès libre — QR Sportigo",
-                content: "Votre salle est accessible 6h–23h, 7j/7. Scannez votre QR code depuis l'application Sportigo : il valide votre passage et déclenche l'ouverture automatique de la porte.",
+                content: "Votre salle est accessible 6h – 23h - 7j/7. Scannez votre QR code depuis l'application Sportigo : il valide votre passage et déclenche l'ouverture automatique de la porte.",
               },
               {
                 title: "Moyens de paiement",

@@ -46,7 +46,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 text-gray-400">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-              <span className="tracking-wider uppercase font-medium">Ouvert 6h–23h · 7j/7</span>
+              <span className="tracking-wider uppercase font-medium">Ouvert 6h – 23h - 7j/7</span>
             </span>
           </div>
           <div className="flex items-center gap-5">

@@ -145,17 +145,17 @@ export default function SallePage() {
 
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
-                  { label: "Tapis de course", icon: "🏃" },
-                  { label: "Vélos d'intérieur", icon: "🚴" },
-                  { label: "Elliptiques", icon: "⚡" },
-                  { label: "Escaliers & Rameurs", icon: "🎯" },
-                ].map((item) => (
+                  "Tapis de course",
+                  "Vélos d'intérieur",
+                  "Elliptiques",
+                  "Escaliers & Rameurs",
+                ].map((label) => (
                   <div
-                    key={item.label}
+                    key={label}
                     className="flex items-center gap-3 p-4 bg-dark-card border border-dark-border rounded-xl hover:border-neon-green/30 transition-colors duration-300"
                   >
-                    <span className="text-xl">{item.icon}</span>
-                    <span className="text-gray-300 text-sm font-medium">{item.label}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-neon-green flex-shrink-0" />
+                    <span className="text-gray-300 text-sm font-medium">{label}</span>
                   </div>
                 ))}
               </div>
@@ -336,7 +336,7 @@ export default function SallePage() {
             Rejoignez <span className="text-neon-green">IMPERIUM</span>
           </h2>
           <p className="mt-4 text-gray-400">
-            Accès illimité · 24h/24 · 7j/7 · Équipement premium
+            Accès illimité · 6h – 23h - 7j/7 · Équipement premium
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
