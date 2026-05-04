@@ -26,7 +26,8 @@
       "Bash(curl -s http://localhost:3000/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" \"http://localhost:3000/_next/image?url=/images/hero-gorilla.png&w=1920&q=75\")",
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} · %{size_download} bytes\\\\n\" http://localhost:3000/)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/tarifs)"
     ]
   }
 }

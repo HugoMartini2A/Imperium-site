@@ -216,7 +216,7 @@ export default function AProposPage() {
               },
               {
                 q: "Comment accéder à la salle en accès libre ?",
-                a: "Vous recevez une carte d'accès magnétique personnelle lors de votre inscription. Cette carte vous permet d'entrer 7j/7 de 6h à 23h selon votre formule.",
+                a: "L'accès se fait via un QR code personnel scanné depuis l'application Sportigo. Le scan valide votre passage et déclenche l'ouverture automatique de la porte. Disponible 7j/7 de 6h à 23h selon votre formule.",
               },
             ].map((item, i) => (
               <AnimatedSection key={item.q} delay={i * 0.08}>

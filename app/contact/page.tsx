@@ -109,7 +109,7 @@ export default function ContactPage() {
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-white font-medium text-sm">Accès libre (badge)</p>
+                      <p className="text-white font-medium text-sm">Accès libre (QR Sportigo)</p>
                       <p className="text-gray-500 text-xs">7 jours / 7</p>
                     </div>
                     <span className="text-neon-green font-bold text-sm text-right">6h – 23h</span>

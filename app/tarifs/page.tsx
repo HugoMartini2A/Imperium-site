@@ -70,6 +70,19 @@ export default function TarifsPage() {
     <>
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        {/* Localisation — haut à gauche */}
+        <div className="absolute top-24 left-4 sm:left-6 lg:left-8 z-20">
+          <div className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase">
+            <svg className="w-3.5 h-3.5 text-neon-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span className="text-neon-green font-bold">Ping</span>
+            <span className="text-gray-500">—</span>
+            <span className="text-gray-300 font-medium">8<sup>ème</sup> arr., Avenue de Bastia</span>
+          </div>
+        </div>
+
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[600px] rounded-full bg-neon-green/5 blur-3xl" />
         </div>
@@ -83,7 +96,7 @@ export default function TarifsPage() {
             Accès illimité · 24h/24 · 7j/7
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            {["Équipement Premium", "Coaching disponible", "Accès carte magnétique", "Sans frais cachés"].map((item) => (
+            {["Équipement Premium", "Coaching disponible", "Accès QR Sportigo", "Sans frais cachés"].map((item) => (
               <span key={item} className="flex items-center gap-2 text-gray-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-neon-green flex-shrink-0" />
                 {item}
@@ -212,15 +225,15 @@ export default function TarifsPage() {
             {[
               {
                 title: "Frais d'inscription",
-                content: "40€ à l'ouverture du contrat (tous abonnements). Inclus : carte d'accès magnétique.",
+                content: "40€ à l'ouverture du contrat (tous abonnements). Inclus : accès via QR code Sportigo.",
               },
               {
                 title: "Accueil & Inscriptions",
                 content: "Lundi – Vendredi : 10h–14h et 15h30–19h30. Ou contactez-nous pour fixer un rendez-vous.",
               },
               {
-                title: "Accès libre",
-                content: "Votre salle est accessible 6h–23h, 7j/7 grâce à votre badge d'accès personnel.",
+                title: "Accès libre — QR Sportigo",
+                content: "Votre salle est accessible 6h–23h, 7j/7. Scannez votre QR code depuis l'application Sportigo : il valide votre passage et déclenche l'ouverture automatique de la porte.",
               },
               {
                 title: "Moyens de paiement",

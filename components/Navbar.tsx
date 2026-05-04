@@ -88,9 +88,16 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className="hidden sm:block">
-              <span className="font-black text-white text-lg tracking-widest">IMPERIUM</span>
-              <span className="block text-neon-green text-xs tracking-[0.3em] font-medium -mt-0.5">GYM</span>
+            <div className="hidden sm:block leading-none">
+              <span className="font-black text-white text-lg tracking-[0.1em] uppercase">
+                IMPERIUM
+              </span>
+              <span
+                className="block font-black text-neon-green text-xs tracking-[0.1em] uppercase mt-0.5"
+                style={{ textShadow: "0 0 10px #39FF14, 0 0 20px rgba(57,255,20,0.5)" }}
+              >
+                GYM
+              </span>
             </div>
           </Link>
 
