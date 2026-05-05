@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroBubble from "@/components/HeroBubble";
+import GymStatus from "@/components/GymStatus";
 
 export default function HomePage() {
   return (
@@ -74,10 +75,7 @@ export default function HomePage() {
       {/* ─── HOURS BANNER (above the fold) ────────────────────────────────── */}
       <section className="bg-black border-y border-neon-green/20 py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs sm:text-sm">
-          <span className="flex items-center gap-2 text-white">
-            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse" />
-            <span className="font-bold tracking-widest uppercase">Ouvert maintenant</span>
-          </span>
+          <GymStatus variant="banner" />
           <span className="text-gray-400">
             <span className="text-neon-green font-bold">6h – 23h - 7j/7</span> · QR code via Sportigo
           </span>

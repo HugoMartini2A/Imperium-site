@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import GymStatus from "@/components/GymStatus";
 
 const links = [
   { href: "/", label: "Accueil" },
@@ -44,10 +45,7 @@ export default function Navbar() {
       <div className="hidden md:flex bg-black border-b border-neon-green/10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between text-xs py-1.5">
           <div className="flex items-center gap-4 text-gray-400">
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-              <span className="tracking-wider uppercase font-medium">Ouvert 6h – 23h - 7j/7</span>
-            </span>
+            <GymStatus variant="navbar" />
           </div>
           <div className="flex items-center gap-5">
             <a
