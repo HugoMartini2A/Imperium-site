@@ -4,30 +4,64 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 12 fragments evenly distributed around the circle
-const FRAGMENTS = Array.from({ length: 12 }, (_, i) => {
-  const angle = (i / 12) * Math.PI * 2;
+// Shards flying out
+const SHARDS = Array.from({ length: 16 }, (_, i) => {
+  const angle = (i / 16) * Math.PI * 2 + (Math.random() - 0.5) * 0.3;
+  const dist = 200 + Math.random() * 120;
   return {
     id: i,
-    x: Math.cos(angle) * 220,
-    y: Math.sin(angle) * 220,
-    rotate: (Math.random() - 0.5) * 90,
-    delay: Math.random() * 0.15,
+    x: Math.cos(angle) * dist,
+    y: Math.sin(angle) * dist,
+    rotate: (Math.random() - 0.5) * 180,
+    size: 4 + Math.random() * 8,
+    delay: Math.random() * 0.06,
   };
 });
 
+// Crack lines — jagged paths radiating from center (fixed, deterministic)
+// 8 cracks with branches. Coordinates relative to a 600x600 viewBox, center at 300,300.
+const CRACKS = [
+  "M300 300 L290 220 L300 200 L285 150 L295 110 L280 80",
+  "M300 300 L380 250 L395 215 L450 175 L475 130 L495 95",
+  "M300 300 L420 320 L470 310 L520 330 L555 315",
+  "M300 300 L380 380 L405 425 L440 470 L455 510 L450 555",
+  "M300 300 L300 400 L315 460 L300 510 L320 565",
+  "M300 300 L220 380 L185 415 L155 470 L125 510 L105 555",
+  "M300 300 L170 320 L130 305 L80 320 L45 305",
+  "M300 300 L210 220 L175 200 L130 165 L95 130",
+  // small branches
+  "M340 230 L370 215 L395 195",
+  "M385 290 L420 280",
+  "M340 380 L355 410",
+  "M260 380 L240 410",
+  "M215 290 L180 280",
+  "M260 230 L235 215 L210 195",
+];
+
 export default function HeroBubble() {
-  const [shattered, setShattered] = useState(false);
+  const [punch, setPunch] = useState(false);
+
+  // Trigger a fresh punch on every mouse enter
+  const triggerPunch = () => {
+    setPunch(false);
+    requestAnimationFrame(() => setPunch(true));
+  };
 
   return (
-    <div
+    <motion.div
       className="relative flex items-center justify-center"
-      onMouseEnter={() => setShattered(true)}
-      onMouseLeave={() => setShattered(false)}
+      onMouseEnter={triggerPunch}
+      onMouseLeave={() => setPunch(false)}
+      // Camera shake on punch
+      animate={
+        punch
+          ? { x: [0, -6, 8, -5, 4, -2, 0], y: [0, 4, -3, 2, -1, 0] }
+          : { x: 0, y: 0 }
+      }
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {/* ── Animated radiating rays (aura) ──────────────────────────── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {/* Slow rotating conic-gradient halo */}
         <motion.div
           className="absolute w-[640px] h-[640px] rounded-full"
           style={{
@@ -42,7 +76,6 @@ export default function HeroBubble() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         />
 
-        {/* Counter-rotating second halo */}
         <motion.div
           className="absolute w-[560px] h-[560px] rounded-full opacity-60"
           style={{
@@ -57,7 +90,6 @@ export default function HeroBubble() {
           transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
         />
 
-        {/* Pulsing soft glow ring */}
         <motion.div
           className="absolute w-[440px] h-[440px] rounded-full"
           animate={{
@@ -71,19 +103,60 @@ export default function HeroBubble() {
         />
       </div>
 
-      {/* ── Circular bubble with gorilla ──────────────────────────── */}
+      {/* ── Shockwave ring (expanding outward on punch) ──────────────── */}
+      <AnimatePresence>
+        {punch && (
+          <motion.div
+            key="shockwave"
+            className="absolute rounded-full border-2 border-neon-green pointer-events-none"
+            style={{ boxShadow: "0 0 40px rgba(57,255,20,0.6)" }}
+            initial={{ width: 320, height: 320, opacity: 0.9 }}
+            animate={{ width: 720, height: 720, opacity: 0, borderWidth: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── Flash burst on impact ──────────────────────────────────── */}
+      <AnimatePresence>
+        {punch && (
+          <motion.div
+            key="flash"
+            className="absolute w-[440px] h-[440px] rounded-full pointer-events-none mix-blend-screen"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(57,255,20,0.6) 30%, transparent 60%)",
+            }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: [0, 1, 0], scale: [0.6, 1.2, 1.4] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── The bubble itself ──────────────────────────────────────── */}
       <motion.div
         className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] lg:w-[440px] lg:h-[440px] rounded-full overflow-hidden border-2 border-neon-green/40 cursor-pointer group"
         style={{
           boxShadow: "inset 0 0 60px rgba(0,0,0,0.4), 0 0 40px rgba(57,255,20,0.3)",
         }}
-        animate={{
-          scale: shattered ? 0.92 : 1,
-          filter: shattered
-            ? "brightness(1.4) saturate(1.5) hue-rotate(15deg) blur(2px)"
-            : "brightness(1) saturate(1) hue-rotate(0deg) blur(0px)",
-        }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        animate={
+          punch
+            ? {
+                scale: [1, 1.12, 0.96, 1.04, 1],
+                filter: [
+                  "brightness(1) saturate(1)",
+                  "brightness(1.6) saturate(1.4)",
+                  "brightness(0.85) saturate(1.2)",
+                  "brightness(1.2) saturate(1.1)",
+                  "brightness(1) saturate(1)",
+                ],
+              }
+            : { scale: 1, filter: "brightness(1) saturate(1)" }
+        }
+        transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1], times: [0, 0.15, 0.4, 0.7, 1] }}
       >
         <Image
           src="/images/hero-gorilla.png"
@@ -103,46 +176,99 @@ export default function HeroBubble() {
           }}
         />
 
-        {/* Glitch overlay on hover */}
+        {/* Crack lines overlay (drawn on punch) */}
         <AnimatePresence>
-          {shattered && (
-            <motion.div
+          {punch && (
+            <motion.svg
+              key="cracks"
+              viewBox="0 0 600 600"
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{ mixBlendMode: "screen" }}
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.5, 0.2, 0.6, 0] }}
+              animate={{ opacity: [0, 1, 1, 0.85] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, times: [0, 0.2, 0.4, 0.6, 1] }}
-              className="absolute inset-0 mix-blend-screen pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent 0%, rgba(57,255,20,0.4) 30%, transparent 50%, rgba(57,255,20,0.3) 70%, transparent 100%)",
-              }}
-            />
+              transition={{ duration: 0.6, times: [0, 0.1, 0.7, 1] }}
+            >
+              {/* Impact halo at center */}
+              <motion.circle
+                cx="300"
+                cy="300"
+                r="0"
+                fill="rgba(255,255,255,0.4)"
+                initial={{ r: 0, opacity: 1 }}
+                animate={{ r: 20, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+              {/* Crack lines — animated stroke draw */}
+              {CRACKS.map((d, i) => (
+                <motion.path
+                  key={i}
+                  d={d}
+                  fill="none"
+                  stroke="#39FF14"
+                  strokeWidth={i < 8 ? 2.5 : 1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    filter: "drop-shadow(0 0 4px #39FF14) drop-shadow(0 0 8px rgba(57,255,20,0.7))",
+                  }}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{
+                    pathLength: { duration: 0.18, delay: i * 0.012, ease: "easeOut" },
+                    opacity: { duration: 0.05, delay: i * 0.012 },
+                  }}
+                />
+              ))}
+              {/* White hot center cracks (overlay) */}
+              {CRACKS.slice(0, 8).map((d, i) => (
+                <motion.path
+                  key={`white-${i}`}
+                  d={d}
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth={1}
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: [0, 0.9, 0.4] }}
+                  transition={{
+                    pathLength: { duration: 0.18, delay: i * 0.012, ease: "easeOut" },
+                    opacity: { duration: 0.6, delay: i * 0.012, times: [0, 0.2, 1] },
+                  }}
+                />
+              ))}
+            </motion.svg>
           )}
         </AnimatePresence>
       </motion.div>
 
-      {/* ── Fragmentation particles on hover ──────────────────────── */}
+      {/* ── Shards exploding outward on punch ──────────────────────── */}
       <AnimatePresence>
-        {shattered &&
-          FRAGMENTS.map((frag) => (
+        {punch &&
+          SHARDS.map((s) => (
             <motion.div
-              key={frag.id}
-              className="absolute w-3 h-3 rounded-sm bg-neon-green pointer-events-none"
+              key={`shard-${s.id}`}
+              className="absolute pointer-events-none"
               style={{
-                boxShadow: "0 0 12px rgba(57,255,20,0.8), 0 0 24px rgba(57,255,20,0.5)",
+                width: s.size,
+                height: s.size,
+                background: "#39FF14",
+                clipPath:
+                  "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+                boxShadow: "0 0 10px #39FF14, 0 0 20px rgba(57,255,20,0.6)",
               }}
               initial={{ x: 0, y: 0, opacity: 1, rotate: 0, scale: 1 }}
               animate={{
-                x: frag.x,
-                y: frag.y,
+                x: s.x,
+                y: s.y,
                 opacity: 0,
-                rotate: frag.rotate,
-                scale: 0.3,
+                rotate: s.rotate,
+                scale: 0.2,
               }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 0.8,
-                delay: frag.delay,
+                duration: 0.7,
+                delay: s.delay,
                 ease: [0.16, 1, 0.3, 1],
               }}
             />
@@ -172,6 +298,6 @@ export default function HeroBubble() {
           );
         })}
       </svg>
-    </div>
+    </motion.div>
   );
 }
