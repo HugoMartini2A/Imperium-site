@@ -140,10 +140,10 @@ export default function HomePage() {
                 desc: "Boissons énergisantes (lot), barres et boissons protéinées, produits liés à la musculation et alimentation équilibrée, boissons riches en collagène.",
               },
             ].map((card, i) => (
-              <AnimatedSection key={card.title} delay={i * 0.15} direction="up">
+              <AnimatedSection key={card.title} delay={i * 0.15} direction="up" className="h-full">
                 <motion.div
                   whileHover={{ y: -6, boxShadow: "0 20px 60px rgba(57,255,20,0.15)" }}
-                  className="group p-8 bg-dark-card border border-dark-border hover:border-neon-green/50 rounded-xl transition-all duration-400 cursor-default"
+                  className="group h-full p-8 bg-dark-card border border-dark-border hover:border-neon-green/50 rounded-xl transition-all duration-400 cursor-default"
                 >
                   <div className="w-14 h-14 rounded-xl bg-neon-green/10 flex items-center justify-center mb-6 group-hover:bg-neon-green/20 transition-colors duration-300">
                     {card.icon}
