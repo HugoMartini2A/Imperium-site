@@ -82,6 +82,24 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            <h3 className="text-neon-green font-bold tracking-widest uppercase text-xs mt-7 mb-4">Légal</h3>
+            <ul className="space-y-2">
+              {[
+                { href: "/mentions-legales", label: "Mentions légales" },
+                { href: "/cgv", label: "CGV" },
+                { href: "/confidentialite", label: "Confidentialité" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-500 hover:text-neon-green text-sm transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contact */}

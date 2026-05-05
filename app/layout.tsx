@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import CursorTrail from "@/components/CursorTrail";
+import CookieBanner from "@/components/CookieBanner";
 
 export const metadata: Metadata = {
   title: "IMPERIUM GYM — Salle de Musculation Porto-Vecchio, Corse",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Footer />
         <FloatingActions />
         <CursorTrail />
+        <CookieBanner />
       </body>
     </html>
   );

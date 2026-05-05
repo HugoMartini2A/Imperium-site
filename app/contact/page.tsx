@@ -11,12 +11,14 @@ export default function ContactPage() {
     telephone: "",
     sujet: "",
     message: "",
+    _hp: "", // honeypot — must stay empty
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formState._hp) return; // bot detected — silently ignore
     setLoading(true);
     await new Promise((r) => setTimeout(r, 1000));
     setSent(true);
@@ -161,6 +163,17 @@ export default function ContactPage() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Honeypot — hidden from real users, filled by bots */}
+                    <input
+                      type="text"
+                      name="_hp"
+                      value={formState._hp}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+                    />
                     {[
                       { name: "nom", label: "Nom complet", type: "text", placeholder: "Jean Dupont" },
                       { name: "email", label: "Email", type: "email", placeholder: "jean@email.com" },
