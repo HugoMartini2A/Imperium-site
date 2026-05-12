@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+
+// Total duration of the punch animation (bubble 550ms + shockwave 700ms + cracks 600ms).
+// We lock new triggers for this duration to avoid stutter from rapid re-entries.
+const PUNCH_LOCK_MS = 700;
 
 // Shards flying out
 const SHARDS = Array.from({ length: 16 }, (_, i) => {
@@ -40,18 +44,31 @@ const CRACKS = [
 
 export default function HeroBubble() {
   const [punch, setPunch] = useState(false);
+  const lockRef = useRef(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  // Trigger a fresh punch on every mouse enter
+  // Trigger a punch. Locked while the animation is playing so rapid re-entries
+  // of the bubble (moving the cursor in/out repeatedly) don't restart it mid-way,
+  // which previously caused visible stutter. Also no-op if the user has
+  // requested reduced motion.
   const triggerPunch = () => {
-    setPunch(false);
-    requestAnimationFrame(() => setPunch(true));
+    if (prefersReducedMotion) return;
+    if (lockRef.current) return;
+    lockRef.current = true;
+    setPunch(true);
+    window.setTimeout(() => {
+      setPunch(false);
+      lockRef.current = false;
+    }, PUNCH_LOCK_MS);
   };
 
   return (
     <motion.div
       className="relative flex items-center justify-center"
       onMouseEnter={triggerPunch}
-      onMouseLeave={() => setPunch(false)}
+      // No onMouseLeave: leaving the bubble mid-animation used to cut the cracks
+      // and shards abruptly. The lock above already ensures the animation completes
+      // cleanly before another can fire.
       // Camera shake on punch
       animate={
         punch
