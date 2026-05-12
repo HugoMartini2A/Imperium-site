@@ -27,7 +27,7 @@ interface PricingCardProps {
 function PricingCard({ title, horaires, prix, note, highlight, badge }: PricingCardProps) {
   return (
     <div
-      className={`relative p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
+      className={`relative h-full flex flex-col p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
         highlight
           ? "bg-neon-green/10 border-neon-green shadow-[0_0_40px_rgba(57,255,20,0.15)]"
           : "bg-dark-card border-dark-border hover:border-neon-green/40"
@@ -41,7 +41,7 @@ function PricingCard({ title, horaires, prix, note, highlight, badge }: PricingC
         </div>
       )}
 
-      <div className="mb-6">
+      <div className="mb-6 min-h-[4rem]">
         <h3 className={`font-black text-sm tracking-widest uppercase mb-2 ${highlight ? "text-neon-green" : "text-gray-300"}`}>
           {title}
         </h3>
@@ -60,7 +60,7 @@ function PricingCard({ title, horaires, prix, note, highlight, badge }: PricingC
 
       <Link
         href="/contact"
-        className={`block text-center py-3 px-6 rounded font-bold text-sm tracking-widest uppercase transition-all duration-300 ${
+        className={`mt-auto block text-center py-3 px-6 rounded font-bold text-sm tracking-widest uppercase transition-all duration-300 ${
           highlight
             ? "bg-neon-green text-black hover:bg-white"
             : "border border-neon-green/40 text-neon-green hover:bg-neon-green hover:text-black"
@@ -111,8 +111,8 @@ export default function TarifsPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <AnimatedSection delay={0}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
+            <AnimatedSection delay={0} className="h-full">
               <PricingCard
                 title="Heures Creuses + Engagement"
                 horaires="6h–11h, 14h–16h · 7j/7"
@@ -120,7 +120,7 @@ export default function TarifsPage() {
                 note="Engagement 12 mois · Frais d'inscription 40€"
               />
             </AnimatedSection>
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.1} className="h-full">
               <PricingCard
                 title="Full Access + Engagement"
                 horaires="6h – 23h - 7j/7"
@@ -145,8 +145,8 @@ export default function TarifsPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <AnimatedSection delay={0}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
+            <AnimatedSection delay={0} className="h-full">
               <PricingCard
                 title="Étudiant Sans Engagement"
                 horaires="6h – 23h - 7j/7"
@@ -155,7 +155,7 @@ export default function TarifsPage() {
                 badge="Étudiant"
               />
             </AnimatedSection>
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.1} className="h-full">
               <PricingCard
                 title="Heures Creuses Sans Engagement"
                 horaires="6h–11h, 14h–16h · 7j/7"
@@ -163,7 +163,7 @@ export default function TarifsPage() {
                 note="Pas d'engagement · Frais d'inscription 40€"
               />
             </AnimatedSection>
-            <AnimatedSection delay={0.2}>
+            <AnimatedSection delay={0.2} className="h-full">
               <PricingCard
                 title="Full Access Sans Engagement"
                 horaires="6h – 23h - 7j/7"
