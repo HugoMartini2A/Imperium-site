@@ -21,8 +21,8 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self'",
-      // Google Maps embed (contact page) + Sportigo embed (abonnement / espace membre)
-      "frame-src https://www.google.com https://*.sportigo.io",
+      // OpenStreetMap embed (carte page contact) + Sportigo embed (abonnement / espace membre)
+      "frame-src https://www.openstreetmap.org https://*.sportigo.io",
       // Sportigo API calls (gestion abonnement, paiement)
       "connect-src 'self' https://*.sportigo.io",
       // Forms can submit to our server or Sportigo

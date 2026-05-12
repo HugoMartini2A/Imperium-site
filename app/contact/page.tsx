@@ -153,7 +153,7 @@ export default function ContactPage() {
               {/* Google Maps */}
               <div className="rounded-2xl overflow-hidden border border-dark-border h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.123456789!2d9.2776!3d41.5911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d8efb0a0000001%3A0x0!2sAvenue%20de%20Bastia%2C%2020137%20Porto-Vecchio!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=9.27452%2C41.60795%2C9.28052%2C41.61195&layer=mapnik&marker=41.60995401675176%2C9.277529055772426"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.3)" }}
