@@ -25,7 +25,7 @@ export default function CookieBanner() {
         <p className="text-gray-400 text-xs leading-relaxed max-w-2xl">
           Ce site utilise uniquement des cookies{" "}
           <span className="text-white font-semibold">strictement nécessaires</span>{" "}
-          à son fonctionnement et à la sécurisation des paiements via Stripe.
+          à son fonctionnement et à la gestion des abonnements via Sportigo.
           Aucun cookie publicitaire ou de tracking n&apos;est déposé.{" "}
           <Link href="/confidentialite" className="text-neon-green hover:underline">
             En savoir plus

@@ -38,14 +38,14 @@ export default function ConfidentialitePage() {
 
         <p className="text-white font-semibold mt-5">b) Souscription d&apos;abonnement (paiement en ligne)</p>
         <div className="mt-2 space-y-1 pl-4 border-l-2 border-dark-border">
-          <p><span className="text-white">Données :</span> nom, prénom, email, informations de paiement</p>
-          <p><span className="text-white">Finalité :</span> exécution du contrat d&apos;abonnement et facturation</p>
+          <p><span className="text-white">Données :</span> nom, prénom, email, téléphone, informations de paiement (carte ou IBAN pour prélèvement SEPA)</p>
+          <p><span className="text-white">Finalité :</span> exécution du contrat d&apos;abonnement, facturation, gestion des accès (QR code)</p>
           <p><span className="text-white">Base légale :</span> exécution d&apos;un contrat (art. 6.1.b RGPD)</p>
           <p><span className="text-white">Durée de conservation :</span> durée du contrat + 5 ans (obligations comptables)</p>
           <p className="text-gray-500 text-xs mt-1">
-            ⚠ Les données bancaires (numéro de carte, CVV…) sont traitées exclusivement par
-            Stripe et ne transitent jamais par nos serveurs. IMPERIUM GYM n&apos;a pas accès
-            à ces informations.
+            ⚠ Les données bancaires (numéro de carte, CVV, IBAN) sont traitées exclusivement par
+            Sportigo (et son processeur de paiement agréé) et ne transitent jamais par nos serveurs.
+            IMPERIUM GYM n&apos;a pas accès à ces informations.
           </p>
         </div>
 
@@ -65,9 +65,12 @@ export default function ConfidentialitePage() {
             <span className="text-white font-semibold">IMPERIUM GYM</span> — traitement interne des demandes et gestion des abonnements
           </li>
           <li>
-            <span className="text-white font-semibold">Stripe</span> (prestataire de paiement) — traitement sécurisé des transactions.
-            Stripe est certifié PCI-DSS niveau 1 et soumis à sa propre politique de confidentialité
-            disponible sur stripe.com/fr/privacy
+            <span className="text-white font-semibold">Sportigo</span> (plateforme française de gestion pour clubs de sport) —
+            gestion des abonnements, encaissement (CB et SEPA), contrôle d&apos;accès via QR code.
+            Politique de confidentialité disponible sur{" "}
+            <a href="https://www.sportigo.io" target="_blank" rel="noopener noreferrer" className="text-neon-green hover:underline">
+              sportigo.io
+            </a>.
           </li>
           <li>
             <span className="text-white font-semibold">Vercel Inc.</span> (hébergeur) — hébergement du site et des données de navigation
@@ -80,9 +83,14 @@ export default function ConfidentialitePage() {
 
       <LegalSection title="4. Transferts hors Union Européenne">
         <p>
-          Vercel Inc. est une société américaine. L&apos;hébergement peut impliquer un transfert de données
-          vers les États-Unis. Ce transfert est encadré par les clauses contractuelles types de la
-          Commission européenne, conformément à l&apos;art. 46 RGPD.
+          Sportigo est une société française et héberge les données de paiement et d&apos;abonnement
+          au sein de l&apos;Union européenne — aucun transfert hors UE de ces données.
+        </p>
+        <p>
+          Vercel Inc. est en revanche une société américaine. L&apos;hébergement du site peut
+          impliquer un transfert de données techniques (logs, IP) vers les États-Unis. Ce transfert
+          est encadré par les clauses contractuelles types de la Commission européenne, conformément
+          à l&apos;art. 46 RGPD.
         </p>
       </LegalSection>
 
@@ -131,12 +139,12 @@ export default function ConfidentialitePage() {
             </p>
           </div>
           <div>
-            <p className="text-white font-semibold">Cookies Stripe</p>
+            <p className="text-white font-semibold">Cookies Sportigo</p>
             <p className="mt-1">
-              Lors du paiement, Stripe peut déposer des cookies sur son propre domaine
-              (checkout.stripe.com) à des fins de sécurité et de prévention de la fraude.
-              Ces cookies relèvent de la politique de Stripe et sont nécessaires au traitement
-              sécurisé du paiement.
+              Lors de la souscription ou de la gestion d&apos;un abonnement, Sportigo peut déposer
+              des cookies sur son propre domaine (sportigo.io) à des fins de sécurité, de session
+              et de prévention de la fraude. Ces cookies relèvent de la politique de Sportigo
+              et sont nécessaires au traitement sécurisé du paiement et de l&apos;accès à la salle.
             </p>
           </div>
           <div>
@@ -158,7 +166,8 @@ export default function ConfidentialitePage() {
           IMPERIUM GYM met en œuvre les mesures techniques et organisationnelles appropriées pour
           protéger vos données personnelles contre toute perte, destruction, altération, accès ou
           divulgation non autorisés. Le site est servi exclusivement en HTTPS (chiffrement TLS).
-          Les paiements sont traités par Stripe, certifié PCI-DSS.
+          Les paiements sont traités par Sportigo et son processeur agréé, dans le respect des
+          standards de sécurité bancaire en vigueur.
         </p>
       </LegalSection>
 

@@ -67,7 +67,7 @@ export default function MentionsLegalesPage() {
 
       <LegalSection title="5. Liens hypertextes">
         <p>
-          Le site peut contenir des liens vers des sites tiers (Instagram, WhatsApp, Stripe…).
+          Le site peut contenir des liens vers des sites tiers (Instagram, WhatsApp, Sportigo…).
           IMPERIUM GYM n&apos;exerce aucun contrôle sur ces sites et décline toute responsabilité
           quant à leur contenu, leurs pratiques en matière de vie privée ou leur disponibilité.
         </p>

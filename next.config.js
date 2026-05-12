@@ -21,12 +21,12 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self'",
-      // Google Maps embed (contact page)
-      "frame-src https://www.google.com",
-      // Stripe API calls from server (kept here for when Stripe.js is added)
-      "connect-src 'self' https://api.stripe.com https://checkout.stripe.com",
-      // Forms can only submit to our server or Stripe checkout
-      "form-action 'self' https://checkout.stripe.com",
+      // Google Maps embed (contact page) + Sportigo embed (abonnement / espace membre)
+      "frame-src https://www.google.com https://*.sportigo.io",
+      // Sportigo API calls (gestion abonnement, paiement)
+      "connect-src 'self' https://*.sportigo.io",
+      // Forms can submit to our server or Sportigo
+      "form-action 'self' https://*.sportigo.io",
     ].join("; "),
   },
 ];

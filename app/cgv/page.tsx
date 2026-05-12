@@ -64,8 +64,8 @@ export default function CGVPage() {
           <li>Sélection de la formule d&apos;abonnement souhaitée</li>
           <li>Renseignement des informations personnelles</li>
           <li>Vérification et validation du récapitulatif de commande</li>
-          <li>Paiement sécurisé via la plateforme Stripe</li>
-          <li>Confirmation de commande par email</li>
+          <li>Paiement sécurisé via la plateforme Sportigo</li>
+          <li>Confirmation de commande par email + activation du QR code d&apos;accès</li>
         </ol>
         <p className="mt-3">
           La validation de la commande vaut acceptation des présentes CGV et engagement de paiement.
@@ -76,21 +76,29 @@ export default function CGVPage() {
 
       <LegalSection title="Article 5 — Paiement">
         <p>
-          Le paiement s&apos;effectue exclusivement en ligne, de manière sécurisée, via la plateforme
-          de paiement <strong className="text-white">Stripe</strong> (Stripe Payments Europe, Ltd.,
-          1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irlande).
+          Le paiement et la gestion des abonnements s&apos;effectuent exclusivement en ligne, de manière sécurisée,
+          via la plateforme <strong className="text-white">Sportigo</strong> ({" "}
+          <a href="https://www.sportigo.io" target="_blank" rel="noopener noreferrer" className="text-neon-green hover:underline">
+            sportigo.io
+          </a>
+          ) — solution française de gestion pour clubs et salles de sport.
         </p>
         <p>
-          Les moyens de paiement acceptés sont ceux proposés par Stripe (carte bancaire Visa,
-          Mastercard, American Express…).
+          Les moyens de paiement acceptés sont la carte bancaire (Visa, Mastercard) et le prélèvement
+          SEPA, selon la formule choisie. Le paiement de l&apos;abonnement mensuel se fait par
+          prélèvement automatique récurrent ; les accès ponctuels par carte bancaire.
         </p>
         <p>
           IMPERIUM GYM ne stocke à aucun moment les coordonnées bancaires du Client.
-          Ces données sont traitées directement par Stripe et sont soumises à sa propre
-          politique de confidentialité (stripe.com/fr/privacy).
+          Ces données sont traitées directement par Sportigo et son processeur de paiement,
+          conformément à sa politique de confidentialité disponible sur{" "}
+          <a href="https://www.sportigo.io" target="_blank" rel="noopener noreferrer" className="text-neon-green hover:underline">
+            sportigo.io
+          </a>.
         </p>
         <p>
-          En cas d&apos;échec de paiement, la commande est automatiquement annulée.
+          En cas d&apos;échec de paiement, la commande est automatiquement annulée et l&apos;accès
+          à la salle suspendu jusqu&apos;à régularisation.
         </p>
       </LegalSection>
 
