@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection, LegalNote } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Conditions Générales de Vente — IMPERIUM GYM",
+  title: "Conditions Générales de Vente",
   description: "Conditions générales de vente des abonnements IMPERIUM GYM, Porto-Vecchio, Corse.",
+  alternates: { canonical: "/cgv" },
+  robots: { index: false, follow: true },
 };
 
 export default function CGVPage() {

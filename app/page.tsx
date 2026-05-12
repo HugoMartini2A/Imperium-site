@@ -187,6 +187,7 @@ export default function HomePage() {
                       src={`/images/${photo.file}`}
                       alt={photo.label}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = "none";

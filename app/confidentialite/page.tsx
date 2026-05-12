@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection, LegalNote } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — IMPERIUM GYM",
+  title: "Politique de confidentialité",
   description: "Politique de confidentialité et de protection des données personnelles d'IMPERIUM GYM.",
+  alternates: { canonical: "/confidentialite" },
+  robots: { index: false, follow: true },
 };
 
 export default function ConfidentialitePage() {

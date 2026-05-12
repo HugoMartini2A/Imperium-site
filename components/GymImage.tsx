@@ -10,9 +10,10 @@ interface GymImageProps {
   className?: string;
   priority?: boolean;
   fallbackLabel?: string;
+  sizes?: string;
 }
 
-export default function GymImage({ src, alt, fill, className, priority, fallbackLabel }: GymImageProps) {
+export default function GymImage({ src, alt, fill, className, priority, fallbackLabel, sizes }: GymImageProps) {
   const [error, setError] = useState(false);
 
   if (error) {
@@ -38,6 +39,7 @@ export default function GymImage({ src, alt, fill, className, priority, fallback
       fill={fill}
       className={className}
       priority={priority}
+      sizes={sizes ?? (fill ? "(max-width: 768px) 100vw, 50vw" : undefined)}
       onError={() => setError(true)}
     />
   );

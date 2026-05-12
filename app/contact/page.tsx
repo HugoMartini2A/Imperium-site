@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -15,14 +16,37 @@ export default function ContactPage() {
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formState._hp) return; // bot detected — silently ignore
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSent(true);
-    setLoading(false);
+    setErrorMsg(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      if (res.status === 429) {
+        setErrorMsg("Trop de tentatives. Merci de patienter une minute.");
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(
+          (data as { error?: string }).error ??
+            "Impossible d'envoyer le message. Réessayez plus tard."
+        );
+        return;
+      }
+      setSent(true);
+    } catch {
+      setErrorMsg("Erreur réseau. Vérifiez votre connexion et réessayez.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -227,6 +251,29 @@ export default function ContactPage() {
                         className="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-neon-green transition-colors duration-200 resize-none"
                       />
                     </div>
+
+                    <p className="text-gray-500 text-xs leading-relaxed">
+                      En envoyant ce formulaire, vous acceptez que vos données
+                      (nom, email, téléphone, message) soient utilisées pour
+                      répondre à votre demande. Conservation 3 ans max — voir
+                      notre{" "}
+                      <Link
+                        href="/confidentialite"
+                        className="text-neon-green hover:underline"
+                      >
+                        politique de confidentialité
+                      </Link>
+                      .
+                    </p>
+
+                    {errorMsg && (
+                      <p
+                        role="alert"
+                        className="text-red-400 text-xs bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3"
+                      >
+                        {errorMsg}
+                      </p>
+                    )}
 
                     <motion.button
                       type="submit"

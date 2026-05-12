@@ -4,9 +4,16 @@ import AnimatedSection from "@/components/AnimatedSection";
 import GymImage from "@/components/GymImage";
 
 export const metadata: Metadata = {
-  title: "Votre Salle — IMPERIUM GYM Porto-Vecchio",
+  title: "Votre Salle",
   description:
-    "Découvrez l'espace musculation Etenon, le cardio dernière génération et le coaching de Peggy FABY, championne IFBB, à IMPERIUM GYM Porto-Vecchio.",
+    "Découvrez l'espace musculation Etenon, le cardio dernière génération et l'équipe de coachs résidents (Peggy, Maximilien, Nicolas) à IMPERIUM GYM Porto-Vecchio.",
+  alternates: { canonical: "/salle" },
+  openGraph: {
+    title: "Votre Salle | IMPERIUM GYM",
+    description:
+      "Espace musculation Etenon Fitness, zone cardio dernière génération, coachs résidents — Porto-Vecchio.",
+    url: "/salle",
+  },
 };
 
 function CheckIcon() {
@@ -43,6 +50,7 @@ export default function SallePage() {
               src="/images/salle-hero.jpg"
               alt="IMPERIUM GYM — La salle"
               fill
+              sizes="100vw"
               className="object-cover opacity-30"
               priority
               fallbackLabel="Photo hero salle"
@@ -196,6 +204,7 @@ export default function SallePage() {
                     src="/images/coach-peggy.jpg"
                     alt="Peggy — Gérante IMPERIUM GYM"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     fallbackLabel="Photo Peggy"
                   />
@@ -264,6 +273,7 @@ export default function SallePage() {
                     src="/images/coach-maximilien.png"
                     alt="Maximilien — Coach diplômé IMPERIUM GYM"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     fallbackLabel="Photo Maximilien"
                   />
@@ -332,6 +342,7 @@ export default function SallePage() {
                     src="/images/coach-nicolas.png"
                     alt="Nicolas — Coach de boxe IMPERIUM GYM"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     fallbackLabel="Photo Nicolas"
                   />

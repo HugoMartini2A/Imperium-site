@@ -3,9 +3,16 @@ import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Tarifs & Abonnement — IMPERIUM GYM Porto-Vecchio",
+  title: "Tarifs & Abonnement",
   description:
     "Découvrez nos formules d'abonnement à partir de 44,90€/mois. Accès 6h – 23h - 7j/7. Avec ou sans engagement. IMPERIUM GYM Porto-Vecchio, Corse.",
+  alternates: { canonical: "/tarifs" },
+  openGraph: {
+    title: "Tarifs & Abonnement | IMPERIUM GYM",
+    description:
+      "Formules dès 44,90€/mois — Avec ou sans engagement. Accès 6h–23h, 7j/7.",
+    url: "/tarifs",
+  },
 };
 
 interface PricingCardProps {

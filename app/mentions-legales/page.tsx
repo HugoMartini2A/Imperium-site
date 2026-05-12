@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection, LegalNote } from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — IMPERIUM GYM",
+  title: "Mentions légales",
   description: "Mentions légales du site IMPERIUM GYM, salle de musculation à Porto-Vecchio, Corse du Sud.",
+  alternates: { canonical: "/mentions-legales" },
+  robots: { index: false, follow: true },
 };
 
 export default function MentionsLegalesPage() {

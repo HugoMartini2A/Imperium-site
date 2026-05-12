@@ -14,6 +14,7 @@ export default function Footer() {
                   src="/images/logo-imperium.png"
                   alt="IMPERIUM GYM"
                   fill
+                  sizes="40px"
                   className="object-contain drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]"
                 />
               </div>

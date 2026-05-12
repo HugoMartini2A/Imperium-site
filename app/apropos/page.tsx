@@ -4,14 +4,65 @@ import AnimatedSection from "@/components/AnimatedSection";
 import GymImage from "@/components/GymImage";
 
 export const metadata: Metadata = {
-  title: "À Propos — IMPERIUM GYM Porto-Vecchio",
+  title: "À Propos",
   description:
-    "L'histoire et la philosophie d'IMPERIUM GYM. Une salle de musculation haut de gamme à Porto-Vecchio, Corse du Sud, avec équipement Etenon et coaching IFBB.",
+    "L'histoire et la philosophie d'IMPERIUM GYM. Une salle de musculation haut de gamme à Porto-Vecchio, Corse du Sud, avec équipement Etenon et coachs résidents.",
+  alternates: { canonical: "/apropos" },
+  openGraph: {
+    title: "À Propos | IMPERIUM GYM",
+    description:
+      "Une salle pensée pour ceux qui prennent leur entraînement au sérieux. Partenaire officiel Etenon Fitness.",
+    url: "/apropos",
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quels sont les horaires d'ouverture ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Votre salle est ouverte en accès libre 6h–23h, 7j/7. L'accueil est ouvert du lundi au vendredi de 10h à 14h et de 15h30 à 19h30.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quels sont les différents forfaits ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Vous trouverez nos tarifs dans l'onglet Tarifs en haut à droite de votre écran sur ordinateur, ou dans le volet déroulant sur smartphone. Plusieurs formules avec ou sans engagement, dès 44,90€/mois.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Y a-t-il un coach sur place ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui — Maximilien (natural bodybuilding & nutrition), Peggy (musculation & nutrition, gérante) et Nicolas (boxe) sont disponibles pour des séances en individuel, duo ou trio, ainsi que des programmes d'entraînement personnalisés.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment accéder à la salle en accès libre ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "L'accès se fait via un QR code personnel scanné depuis l'application Sportigo. Le scan valide votre passage et déclenche l'ouverture automatique de la porte. Disponible 6h–23h, 7j/7 selon votre formule.",
+      },
+    },
+  ],
 };
 
 export default function AProposPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -43,6 +94,7 @@ export default function AProposPage() {
                   src="/images/ambiance.jpg"
                   alt="Ambiance IMPERIUM GYM"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover opacity-80"
                   fallbackLabel="Photo ambiance salle"
                 />
@@ -147,6 +199,7 @@ export default function AProposPage() {
                     src="/images/logo-etenon.jpg"
                     alt="Etenon Fitness"
                     fill
+                    sizes="176px"
                     className="object-cover"
                     fallbackLabel="Logo Etenon"
                   />
